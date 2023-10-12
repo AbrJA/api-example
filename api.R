@@ -2,7 +2,7 @@ library(plumber)
 library(future)
 library(promises)
 
-plan(multisession(workers = 2))
+plan(multicore(workers = 2))
 
 system("Rscript script.R", wait = FALSE)
 
@@ -30,7 +30,7 @@ updateModel <- function() {
 #* @apiDescription API to check the future package
 
 #* Return a global variable
-#* @get /check
+#* @get /api-test/check
 function() {
   if (.GlobalEnv$FREE) {
     assign("FREE", value = FALSE, envir = .GlobalEnv)
