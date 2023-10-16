@@ -7,7 +7,7 @@ function writelog(level, msg)
 end
 
 global k_file = "./data/model.json"
-global X = 0.0
+global X = JSON3.read("""{"x": 0}""")
 
 @get "/api-test/check" function()
     return Dict("date" => Dates.now(), "value" => sum(X["x"]))
